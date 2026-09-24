@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { toPng } from 'html-to-image';
-import { Smartphone, Share2, Download, Copy, Check } from 'lucide-react';
+import { Smartphone, Share2, Download, Check } from 'lucide-react';
 
 type Position = {
   id: string;
@@ -122,7 +122,7 @@ function App() {
             <ul className="flex flex-col gap-3">
               {POSITIONS.map((pos) => {
                 const isLocked = !!pos.lockedValue;
-                const currentValue = isLocked ? pos.lockedValue : (values[pos.id] || '');
+                const currentValue = (isLocked ? pos.lockedValue : values[pos.id]) || '';
                 
                 return (
                   <li key={pos.id} className="relative flex items-center gap-4 rounded-xl p-2 transition-colors">
